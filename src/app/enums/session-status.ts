@@ -1,1 +1,8 @@
-export enum SessionStatus {}
+export enum SessionStatus {
+  Waiting,
+  Starting,
+  Underway,
+  Finished,
+  Cancelled,
+  Error
+}

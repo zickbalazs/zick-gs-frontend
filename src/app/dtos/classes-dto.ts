@@ -1,8 +1,8 @@
 import {CarDTO} from './car-dto';
 
 export interface ClassesDto {
-  Abbreviation: string,
-  Name?: string,
-  Color?: string,
-  Cars: CarDTO[]
+  abbreviation: string,
+  name?: string,
+  color?: string,
+  cars: CarDTO[]
 }
