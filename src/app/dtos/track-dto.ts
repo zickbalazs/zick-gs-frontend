@@ -1,6 +1,6 @@
 export interface TrackDTO {
-  Id: string,
-  Folder: string,
-  CountryCode?: string,
-
+  id: string,
+  folder: string,
+  name: string,
+  countryCode?: string,
 }
