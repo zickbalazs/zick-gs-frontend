@@ -1,4 +1,4 @@
-export interface RegistrationDTO {
+export interface RegistrationFormDto {
   email: string,
   username: string,
   password: string,
