@@ -1,11 +1,12 @@
 import {Component, inject, Signal, signal} from '@angular/core';
 import {MatCardActions, MatCardContent} from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatIcon} from '@angular/material/icon';
 import {RegistrationFormDto} from '../../../dtos/forms/registration-form-dto';
 import {AuthService} from '../../../service/auth-service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   imports: [
@@ -17,13 +18,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatLabel,
     MatIcon,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatError
   ],
   selector: 'app-registration-form-component',
   styleUrl: './registration-form-component.scss',
   templateUrl: './registration-form-component.html',
 })
 export class RegistrationFormComponent {
+  private snackbar = inject(MatSnackBar);
+
   protected readonly passwordAgain = signal('');
   protected readonly Form: Signal<RegistrationFormDto> = signal({
     email: '',
@@ -33,6 +37,8 @@ export class RegistrationFormComponent {
   })
 
   Submit(){
+    if (this.passwordAgain() != this.Form().password)
+      this.snackbar.open("Passwords do not match!", "OK");
   }
 
 }
