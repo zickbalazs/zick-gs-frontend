@@ -45,6 +45,7 @@ export class LoginForm {
         this.snackBar.open(res.detail, 'OK');
       } else {
         this.snackBar.open('Successful login!');
+        this.loginService.isLoggedIn.update(()=>true);
         this.router.navigate(['/']);
       }
       this.loginProgress.update(() => false);
