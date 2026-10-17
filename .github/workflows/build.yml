@@ -1,0 +1,18 @@
+on:
+  pull_request: 
+    branches:
+      - main
+      - dev
+name: Build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v4
+        - name: install angular cli
+          run: npm i -g @angular/cli
+        - name: install dependencies
+          run: npm i
+        - name: build project
+          run: ng build
