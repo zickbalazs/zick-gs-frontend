@@ -7,6 +7,7 @@ import {RegistrationFormDto} from '../../../dtos/forms/registration-form-dto';
 import {AuthService} from '../../../service/auth-service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
 
 @Component({
   imports: [
@@ -26,7 +27,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   templateUrl: './registration-form-component.html',
 })
 export class RegistrationFormComponent {
-  private snackbar = inject(MatSnackBar);
+  private readonly snackbar = inject(MatSnackBar);
+  private readonly authService = inject(AuthService)
+  private readonly router = inject(Router)
 
   protected readonly passwordAgain = signal('');
   protected readonly Form: Signal<RegistrationFormDto> = signal({
@@ -39,6 +42,19 @@ export class RegistrationFormComponent {
   Submit(){
     if (this.passwordAgain() != this.Form().password)
       this.snackbar.open("Passwords do not match!", "OK");
+    else {
+      this.authService.RegisterUser(this.Form()).subscribe((res)=>{
+        let message = '';
+        if (res){
+          message = res.title
+        }
+        else{
+          message = 'Successful registration!';
+          this.router.navigate(['/login']);
+        }
+        this.snackbar.open(message, "OK");
+      });
+    }
   }
 
 }

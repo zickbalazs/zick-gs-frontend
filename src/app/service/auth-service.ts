@@ -14,7 +14,7 @@ export class AuthService {
 
   RegisterUser(form: RegistrationFormDto){
     return this.http.post(environment.apiUrl+'User/register', form)
-      .pipe(map((x)=>x), catchError((x: RegistrationErrorDto)=>of(x)));
+      .pipe(map(()=>null), catchError((x: RegistrationErrorDto)=>of(x)));
   }
   LoginUser(form: LoginFormDto){
     return this.http.post<null|LoginErrorDto>(environment.apiUrl+'login?useCookies=true', form)
