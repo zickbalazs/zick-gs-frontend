@@ -1,9 +1,15 @@
 import { Routes } from '@angular/router';
-import {GetVehicles} from './debug/get-vehicles/get-vehicles';
-
+import { Login } from './pages/login/login';
+import {MainComponent} from './pages/main-component/main-component';
 export const routes: Routes = [
   {
+    path: 'login',
+    title: 'ZGS | Login',
+    component: Login
+  },
+  {
     path: '',
-    component: GetVehicles
+    title: 'ZGS',
+    component: MainComponent
   }
 ];
