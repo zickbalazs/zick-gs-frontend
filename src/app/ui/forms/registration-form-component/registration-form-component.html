@@ -2,28 +2,54 @@
   <div class="form pe-4">
     <mat-form-field>
       <mat-label>Username:</mat-label>
-      <input matInput type="text" placeholder="racer">
+      <input matInput
+             type="text"
+             required
+             minlength="3"
+             maxlength="80"
+             [(ngModel)]="Form().username"
+             placeholder="racer">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Email address:</mat-label>
-      <input matInput type="text" placeholder="racer@m3.example"/>
+      <input matInput
+             type="email"
+             required
+             email="true"
+             [(ngModel)]="Form().email"
+             placeholder="racer@m3.example"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>SteamID:</mat-label>
-      <input matInput type="text" placeholder="717555055"/>
+      <input matInput
+             type="text"
+             required
+             minlength="17"
+             maxlength="17"
+             [(ngModel)]="Form().steamId"
+             placeholder="717555055"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password:</mat-label>
-      <input matInput type="password"/>
+      <input matInput
+             minlength="8"
+             required
+             [(ngModel)]="Form().password"
+             type="password"/>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Password again:</mat-label>
-      <input matInput type="password"/>
+      <input matInput
+             minlength="8"
+             required
+             [(ngModel)]="passwordAgain"
+             type="password"/>
     </mat-form-field>
   </div>
 </mat-card-content>
 <mat-card-actions>
-  <button matButton="text">
+  <button matButton="text"
+          (click)="Submit()">
     <mat-icon fontIcon="done"/>
     Submit
   </button>
