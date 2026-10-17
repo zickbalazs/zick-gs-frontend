@@ -1,0 +1,15 @@
+name: Lint project
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install angular CLI
+        run: npm i -g @angular/cli
+      - name: Install packages
+        run: npm i
+      - name: Lint project files
+        run: ng lint
