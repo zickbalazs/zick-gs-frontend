@@ -1,19 +1,22 @@
-<div class="form mx-5">
-  <h1>Log in</h1>
-  <mat-form-field>
-    <mat-label>Username:</mat-label>
-    <input matInput
-           type="text"
-           placeholder="racer"
-           [(ngModel)]="loginForm.email"/>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Password:</mat-label>
-    <input matInput
-           type="password"
-           [(ngModel)]="loginForm.password" />
-  </mat-form-field>
-  <button matButton="filled"
+<mat-card-content>
+  <div class="form">
+    <mat-form-field>
+      <mat-label>Username:</mat-label>
+      <input matInput
+             type="text"
+             placeholder="racer"
+             [(ngModel)]="loginForm.email"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password:</mat-label>
+      <input matInput
+             type="password"
+             [(ngModel)]="loginForm.password" />
+    </mat-form-field>
+  </div>
+</mat-card-content>
+<mat-card-actions>
+  <button matButton="text"
           (click)="UpdateLogin()"
           [showProgress]="loginProgress()">
     Submit
@@ -22,4 +25,4 @@
                           tabindex=""
                           progressIndicator />
   </button>
-</div>
+</mat-card-actions>

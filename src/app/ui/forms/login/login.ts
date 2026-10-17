@@ -7,6 +7,7 @@ import { LoginFormDto } from '../../../dtos/forms/login-form-dto';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {MatCardActions, MatCardContent} from '@angular/material/card';
 
 @Component({
   imports: [
@@ -16,6 +17,8 @@ import { FormsModule } from '@angular/forms';
     MatProgressSpinner,
     MatSnackBarModule,
     FormsModule,
+    MatCardContent,
+    MatCardActions,
   ],
   selector: 'login-form',
   styleUrl: './login.scss',

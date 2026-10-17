@@ -1,7 +1,12 @@
 <mat-toolbar>
-  <button matIconButton>
+  <button matIconButton
+          (click)="canOpen.update((x)=>!x)">
     <mat-icon color="white" fontIcon="menu"/>
   </button>
   <span class="ms-1">{{ title() }}</span>
 </mat-toolbar>
-<router-outlet />
+
+<mat-sidenav-container>
+  <mat-sidenav mode="over" [opened]="canOpen()">Asd</mat-sidenav>
+  <mat-sidenav-content><router-outlet /></mat-sidenav-content>
+</mat-sidenav-container>
