@@ -6,6 +6,7 @@ import { LoginFormDto } from '../dtos/forms/login-form-dto';
 import { LoginErrorDto } from '../dtos/error/login-error-dto';
 import { catchError, map, of } from 'rxjs';
 import { RegistrationErrorDto } from '../dtos/error/registration-error-dto';
+import {UserDto} from '../dtos/user-dto';
 
 @Service()
 export class AuthService {
@@ -19,5 +20,8 @@ export class AuthService {
   LoginUser(form: LoginFormDto){
     return this.http.post<null|LoginErrorDto>(environment.apiUrl+'login?useCookies=true', form)
       .pipe(map(x=>null), catchError((x: HttpErrorResponse)=>of(x.error as LoginErrorDto)));
+  }
+  GetUserData(){
+    return this.http.get<UserDto>(environment.apiUrl+'User').pipe(catchError(()=>of(null)));
   }
 }
