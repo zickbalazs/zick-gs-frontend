@@ -1,29 +1,22 @@
 import {inject, Service} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {SessionDTO} from '../dtos/session-dto';
+import {catchError, of} from 'rxjs';
 
 @Service()
 export class SessionService {
   private httpClient = inject(HttpClient);
 
-  public GetSessionsByLeague(leagueId: string){
-    return this.httpClient.get(environment.apiUrl+`Session/league/${leagueId}`)
+  GetSessionsAvailableByLeague(leagueId: string){
+    return this.httpClient
+      .get<SessionDTO[]>(environment.apiUrl+`Session/league/available/${leagueId}`)
+      .pipe(catchError(()=>of(null)));
   }
 
-  public GetSession(sessionId: string){
-    return this.httpClient.get(environment.apiUrl+`Session/byId/${sessionId}`)
+  GetUserSessions(){
+    return this.httpClient
+      .get<SessionDTO[]>(environment.apiUrl+'Session')
+      .pipe(catchError(()=>of(null)));
   }
-
-  public RegisterToSession(sessionId: string){
-    return this.httpClient.post(environment.apiUrl+`Session/register/${sessionId}`, {});
-  }
-
-  public UnregisterFromSession(sessionId: string){
-    return this.httpClient.post(environment.apiUrl+`Session/unregister/${sessionId}`, {});
-  }
-
-  public ModifyRegistration(sessionId: string, carId: string){
-    return this.httpClient.patch(environment.apiUrl+`Session/modify/${sessionId}`, { car: carId });
-  }
-
 }
