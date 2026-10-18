@@ -5,9 +5,10 @@ import { AsyncPipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from '@angular/material/sidenav';
+import {Navbar} from './ui/navbar/navbar';
 
 @Component({
-  imports: [RouterOutlet, MatToolbar, MatIconButton, MatIcon, MatSidenavContainer, MatSidenav, MatSidenavContent],
+  imports: [RouterOutlet, MatToolbar, MatIconButton, MatIcon, MatSidenavContainer, MatSidenavContent, Navbar, MatSidenav],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',

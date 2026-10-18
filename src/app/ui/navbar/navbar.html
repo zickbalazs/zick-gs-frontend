@@ -1,0 +1,13 @@
+<mat-nav-list>
+  <mat-list-item routerLink="/"><mat-icon matListItemIcon fontIcon="home"/><a matListItemTitle>Home</a></mat-list-item>
+  <mat-list-item routerLink="/content"><mat-icon matListItemIcon fontIcon="folder"/><a matListItemTitle>Content</a></mat-list-item>
+  <mat-list-item routerLink="/leagues"><mat-icon matListItemIcon fontIcon="trophy"/><a matListItemTitle>Leagues</a></mat-list-item>
+  @if (authService.isLoggedIn()){
+    <mat-list-item routerLink="/sessions"><mat-icon matListItemIcon fontIcon="sports-motorsports"/><a matListItemTitle>Sessions</a></mat-list-item>
+    <mat-list-item routerLink="/account"><mat-icon matListItemIcon fontIcon="person"/><a matListItemTitle>Account</a></mat-list-item>
+  }
+  @else{
+    <mat-list-item routerLink="/login"><mat-icon matListItemIcon fontIcon="person"/><a matListItemTitle>Login</a></mat-list-item>
+    <mat-list-item routerLink="/registration" ><mat-icon matListItemIcon fontIcon="add"/><a matListItemTitle>Register</a></mat-list-item>
+  }
+</mat-nav-list>
