@@ -1,7 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {AuthService} from '../../service/auth-service';
 import {AsyncPipe} from '@angular/common';
-import {UserDto} from '../../dtos/user-dto';
 import {map} from 'rxjs';
 import {RouterLink} from '@angular/router';
 

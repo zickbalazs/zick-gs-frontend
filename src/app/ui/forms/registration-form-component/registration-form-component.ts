@@ -44,7 +44,7 @@ export class RegistrationFormComponent {
       this.snackbar.open("Passwords do not match!", "OK");
     else {
       this.authService.RegisterUser(this.Form()).subscribe((res)=>{
-        let message = '';
+        let message;
         if (res){
           message = res.title
         }

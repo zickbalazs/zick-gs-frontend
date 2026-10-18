@@ -1,10 +1,9 @@
-import {inject, Service, signal} from '@angular/core';
+import {inject, Service} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {SessionDTO} from '../dtos/session-dto';
 import {catchError, of} from 'rxjs';
 import {FirstExceptionDto} from '../dtos/error/first-exception-dto';
-import {RegistrationDto} from '../dtos/registration-dto';
 
 @Service()
 export class SessionService {

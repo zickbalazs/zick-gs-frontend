@@ -20,7 +20,7 @@ import {MatCardActions, MatCardContent} from '@angular/material/card';
     MatCardContent,
     MatCardActions,
   ],
-  selector: 'login-form',
+  selector: 'app-login-form',
   styleUrl: './login.scss',
   templateUrl: './login.html',
 })

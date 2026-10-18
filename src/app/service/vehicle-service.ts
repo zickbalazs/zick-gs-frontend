@@ -2,7 +2,7 @@ import {inject, Service} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import { CarDTO } from '../dtos/car-dto';
-import { catchError, map, of } from 'rxjs';
+import { catchError, of } from 'rxjs';
 import { FirstExceptionDto } from '../dtos/error/first-exception-dto';
 
 @Service()
