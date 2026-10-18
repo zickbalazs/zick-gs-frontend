@@ -1,9 +1,10 @@
 import {inject, Service, signal} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {SessionDTO} from '../dtos/session-dto';
 import {catchError, of} from 'rxjs';
 import {FirstExceptionDto} from '../dtos/error/first-exception-dto';
+import {RegistrationDto} from '../dtos/registration-dto';
 
 @Service()
 export class SessionService {
@@ -15,17 +16,10 @@ export class SessionService {
       .pipe(catchError(()=>of(null)));
   }
 
-  GetUserSessions(){
+  GetSession(sessionId: string){
     return this.httpClient
-      .get<SessionDTO[]>(environment.apiUrl+'Session/registered', {withCredentials: true})
-      .pipe(catchError((x: FirstExceptionDto)=>of(x)));
+      .get<SessionDTO>(environment.apiUrl+`Session/byId/${sessionId}`)
+      .pipe(catchError((x: HttpErrorResponse)=>of(x.error as FirstExceptionDto)));
   }
-
-
-  UserSessions = signal(()=>this.GetUserSessions());
-
-
-
-
 
 }
