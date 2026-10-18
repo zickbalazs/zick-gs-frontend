@@ -1,0 +1,8 @@
+<div class="m-3">
+  <h1>Leagues</h1>
+  <div class="leagues">
+    @for(league of leagues | async; track league){
+      <app-league-item-component [league]="league" />
+    }
+  </div>
+</div>

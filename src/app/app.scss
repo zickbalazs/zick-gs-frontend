@@ -9,4 +9,14 @@
 
 mat-sidenav-container{
   flex: 1;
+  display: flex;
+  flex-flow: column;
+  background: url("assets/main-bg.jpeg");
+  background-size: cover;
+  backdrop-filter: blur(50px);
+}
+
+mat-sidenav-content{
+  flex: 1 1;
+  backdrop-filter: blur(10px);
 }

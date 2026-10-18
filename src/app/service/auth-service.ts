@@ -1,10 +1,10 @@
-import {inject, Service, signal} from '@angular/core';
+import {inject, Service, Signal, signal, WritableSignal} from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RegistrationFormDto} from '../dtos/forms/registration-form-dto';
 import { environment } from '../../environments/environment';
 import { LoginFormDto } from '../dtos/forms/login-form-dto';
 import { LoginErrorDto } from '../dtos/error/login-error-dto';
-import { catchError, map, of } from 'rxjs';
+import {catchError, map, Observable, of} from 'rxjs';
 import { RegistrationErrorDto } from '../dtos/error/registration-error-dto';
 import {UserDto} from '../dtos/user-dto';
 
@@ -14,6 +14,7 @@ export class AuthService {
   private http = inject(HttpClient);
 
   isLoggedIn = signal(false);
+  userData: WritableSignal<Observable<null|UserDto>> = signal(new Observable<null|UserDto>());
 
   RegisterUser(form: RegistrationFormDto){
     return this.http.post(environment.apiUrl+'User/register', form)
