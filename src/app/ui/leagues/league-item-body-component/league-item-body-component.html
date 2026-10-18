@@ -1,1 +1,12 @@
-<p>league-item-body-component works!</p>
+<mat-card-content>
+  <p>{{league().description}}</p>
+  <p>Current track: {{track() | async}}</p>
+  <p>Racing classes:</p>
+  @if (league().currentClassIds.length > 0){
+    <div class="racing-classes">
+      @for(cls of league().currentClassIds; track cls){
+        <span class="racing-class">{{cls}}</span>
+      }
+    </div>
+  }
+</mat-card-content>

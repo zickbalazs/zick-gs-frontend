@@ -1,6 +1,6 @@
 export interface CarDTO {
   id: string
-  name: string,
+  model: string,
   manufacturer: string,
   folderName: string,
 }

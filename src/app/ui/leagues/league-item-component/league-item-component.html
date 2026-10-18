@@ -2,18 +2,13 @@
   <app-league-item-title-component [title]="league().name"
                                    [from]="league().start"
                                    [to]="league().end" />
-  <mat-card-content>
-    <p>Current track: {{track() | async}}</p>
-    <p>Racing classes:</p>
-    @if (league().currentClassIds.length > 0){
-      <div class="racing-classes">
-      @for(cls of league().currentClassIds; track cls){
-        <span class="racing-class">{{cls}}</span>
-      }
-      </div>
-    }
-  </mat-card-content>
-  <mat-card-actions>
-    <button matButton="text">View Sessions</button>
-  </mat-card-actions>
+  <app-league-item-body-component [league]="league()" />
+  @if(leagueHasSessions(league())) {
+    <mat-card-actions>
+      <button matButton="text">View Sessions</button>
+    </mat-card-actions>
+  }
+  @else{
+    <p>This league doesn't have active sessions yet, check back later!</p>
+  }
 </mat-card>

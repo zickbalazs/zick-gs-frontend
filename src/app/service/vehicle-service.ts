@@ -16,7 +16,7 @@ export class VehicleService {
   }
 
   public GetVehicleByClass(classId: string){
-    return this.httpClient.get<CarDTO>(environment.apiUrl+`Vehicle/class/${classId}`).pipe(
+    return this.httpClient.get<CarDTO[]>(environment.apiUrl+`Vehicle/class/${classId}`).pipe(
       catchError((e: FirstExceptionDto)=>of(e))
     );
   }
