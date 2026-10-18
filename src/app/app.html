@@ -1,1 +1,14 @@
-<router-outlet />
+<mat-toolbar>
+  <button matIconButton
+          (click)="canOpen.update((x)=>!x)">
+    <mat-icon color="white" fontIcon="menu"/>
+  </button>
+  <span class="ms-1">{{ title() }}</span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav [opened]="canOpen()">
+    <app-navbar/>
+  </mat-sidenav>
+  <mat-sidenav-content><router-outlet /></mat-sidenav-content>
+</mat-sidenav-container>

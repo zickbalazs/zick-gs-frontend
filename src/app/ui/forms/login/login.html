@@ -1,0 +1,28 @@
+<mat-card-content>
+  <div class="form">
+    <mat-form-field>
+      <mat-label>Username:</mat-label>
+      <input matInput
+             type="text"
+             placeholder="racer"
+             [(ngModel)]="loginForm.email"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password:</mat-label>
+      <input matInput
+             type="password"
+             [(ngModel)]="loginForm.password" />
+    </mat-form-field>
+  </div>
+</mat-card-content>
+<mat-card-actions>
+  <button matButton="text"
+          (click)="UpdateLogin()"
+          [showProgress]="loginProgress()">
+    Submit
+    <mat-progress-spinner mode="indeterminate"
+                          diameter="20"
+                          tabindex=""
+                          progressIndicator />
+  </button>
+</mat-card-actions>
