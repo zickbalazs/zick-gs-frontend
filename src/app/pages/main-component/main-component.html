@@ -1,1 +1,6 @@
-<p>main-component works!</p>
+@if(authService.isLoggedIn()){
+  <app-landing-user-component/>
+}
+@else{
+  <app-landing-userless-component/>
+}

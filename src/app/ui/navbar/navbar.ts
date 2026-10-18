@@ -28,8 +28,11 @@ export class Navbar {
   protected readonly authService = inject(AuthService)
   ngOnInit() {
     this.authService.GetUserData().subscribe((res)=>{
-      if (res)
+      if (res){
+        this.authService.userData.update(()=>this.authService.GetUserData());
         this.authService.isLoggedIn.update(()=>true);
+
+      }
     });
   }
 }
