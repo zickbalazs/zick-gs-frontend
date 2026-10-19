@@ -5,7 +5,7 @@
   <app-league-item-body-component [league]="league()" />
   @if(leagueHasSessions(league())) {
     <mat-card-actions>
-      <button matButton="text">View Sessions</button>
+      <button matButton="text" (click)="ViewSessions()">View Sessions</button>
     </mat-card-actions>
   }
   @else{

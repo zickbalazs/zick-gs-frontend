@@ -1,8 +1,8 @@
-import {inject, Service} from '@angular/core';
+import {inject, Service, signal} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {RegistrationDto} from '../dtos/registration-dto';
-import {catchError, of} from 'rxjs';
+import {catchError, map, of} from 'rxjs';
 import {FirstExceptionDto} from '../dtos/error/first-exception-dto';
 import {ExceptionDetailDto} from '../dtos/error/exception-detail-dto';
 
@@ -22,5 +22,14 @@ export class RegistrationService {
         return of(x.error as ExceptionDetailDto);
       }))
   }
+
+  public RegisterToSession(sessionId: string, carId: string){
+    return this.httpClient
+      .post<object>(environment.apiUrl+`Session/register/${sessionId}`, {carId}, {withCredentials: true})
+      .pipe(catchError((x: HttpErrorResponse)=>{
+        return of(x.error as ExceptionDetailDto);
+      }));
+  }
+
 
 }

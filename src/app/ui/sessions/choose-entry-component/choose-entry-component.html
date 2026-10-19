@@ -1,0 +1,33 @@
+<h2 class="ms-2">Select your car</h2>
+<mat-dialog-content>
+  <mat-stepper>
+    <mat-step [completed]="selectedClass != ''">
+      <ng-template matStepLabel>Choose your racing class</ng-template>
+      <mat-form-field class="m-3">
+        <mat-label>Select racing class</mat-label>
+        <mat-select [(value)]="selectedClass"
+                    (valueChange)="UpdateRequest()">
+          @for(cls of racingClasses | async; track cls){
+            <mat-option [value]="cls">{{cls}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Choose your car</ng-template>
+      @if (selectedClass != ''){
+        <mat-form-field>
+          <mat-label>Select a car</mat-label>
+          <mat-select [(value)]="selectedCar">
+            @for(car of cars() | async; track car){
+              <mat-option [value]="car.id">{{car.model}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      }
+    </mat-step>
+  </mat-stepper>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton [mat-dialog-close]="selectedCar">OK</button>
+</mat-dialog-actions>
